@@ -1,0 +1,39 @@
+{% extends "template.html" %}
+{% block conteudo %}
+
+
+<div class="text-center">
+    <a class="btn btn-primary" href="{{ url_for('login') }}">Login</a>
+    <a class="btn btn-danger" href="{{ url_for('logout') }}">Logout</a>
+    <a class="btn btn-primary" href="{{ url_for('novo') }}">Novo Jogo</a>
+</div>
+
+<div class="row">
+    {% for jogo in jogos %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center">
+            {% set imagem_capa = url_for('imagem', nome_arquivo='capa' ~ jogo.id ~ '.jpg') %}
+            {% set imagem_padrao = url_for('imagem', nome_arquivo='capa_padrao.jpg') %}
+
+            <img src="{{ imagem_capa }}" 
+                 onerror="this.onerror=null;this.src='{{ imagem_padrao }}';" 
+                 class="card-img-top"
+                 style="height: 300px; object-fit: cover;">
+
+            <div class="card-body">
+                <h5 class="card-title">{{ jogo.nome }}</h5>
+                <p class="card-text">
+                    <strong>Categoria:</strong> {{ jogo.categoria }}<br>
+                    <strong>Console:</strong> {{ jogo.console }}
+                </p>
+            </div>
+            <div class="card-footer">
+                <a href="{{ url_for('editar', id=jogo.id) }}" class="btn btn-sm btn-warning">Editar</a>
+                <a href="{{ url_for('deletar', id=jogo.id) }}" class="btn btn-sm btn-danger">Deletar</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
