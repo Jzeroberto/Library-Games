@@ -24,8 +24,8 @@ Interface responsiva usando Bootstrap.
 
 ▶️ Como executar:
 
-git clone https://github.com/usuario/repo-biblioteca-jogos.git
-cd repo-biblioteca-jogos
+git clone https://https://github.com/Jzeroberto/Library-Games.git
+cd Library-Games
 python3 -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
